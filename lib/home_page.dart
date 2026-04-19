@@ -16,7 +16,33 @@ class HomePage extends StatelessWidget {
         //   IconButton(onPressed: () {}, icon: Icon(Icons.person)),
         // ],
       ),
-      body: Text("Hello 63E", style: TextStyle()),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              "Hello 63E",
+              style: TextStyle(color: Colors.cyan, fontSize: 30),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "Welcome to our class",
+              style: TextStyle(color: Colors.cyan, fontSize: 20),
+            ),
+          ),
+
+          Container(
+            width: 300,
+            height: 400,
+            padding: EdgeInsets.all(20),
+            margin: EdgeInsets.all(20),
+            decoration: BoxDecoration(color: Colors.blueGrey),
+            child: Text("I am container!!!"),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueGrey,
         foregroundColor: Colors.white,
