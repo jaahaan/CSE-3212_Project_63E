@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_63e/widgets/input_field.dart';
 
 class ConverterPage extends StatefulWidget {
   const ConverterPage({super.key});
@@ -11,6 +12,8 @@ class ConverterPage extends StatefulWidget {
 
 class _ConverterPageState extends State {
   TextEditingController controller = TextEditingController();
+  TextEditingController passController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
   double result = 0;
   @override
@@ -33,25 +36,37 @@ class _ConverterPageState extends State {
                 children: [
                   Form(
                     key: _formKey,
-                    child: TextFormField(
-                      controller: controller,
-                      keyboardType: TextInputType.numberWithOptions(
-                        decimal: true,
-                      ),
-                      validator: (value) {
-                        if (controller.text.isEmpty) {
-                          return "Field is empty!!";
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.monetization_on),
-                        hintText: "Enter Amount",
-                        labelText: "Amount",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                    child: Column(
+                      children: [
+                        InputField(
+                          controller: passController,
+                          keyboardType: TextInputType.visiblePassword,
+                          validator: (value) {
+                            if (passController.text.isEmpty) {
+                              return "Field is Empty!!";
+                            }
+                            return null;
+                          },
+                          hintText: "Enter Password",
+                          labelText: "Password",
+                          prefixIcon: Icon(Icons.lock),
                         ),
-                      ),
+                        InputField(
+                          controller: controller,
+                          keyboardType: TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
+                          validator: (value) {
+                            if (controller.text.isEmpty) {
+                              return "Field is empty!!";
+                            }
+                            return null;
+                          },
+                          hintText: "Enter amount",
+                          labelText: "Amount",
+                          prefixIcon: Icon(Icons.monetization_on),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: 10),
